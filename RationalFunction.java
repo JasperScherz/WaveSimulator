@@ -4,15 +4,15 @@ public class RationalFunction extends Function{
 
     private Function denomFunction;
 
-    public RationalFunction(Function numFunction, Function denomFunction){
-        super(numFunction.coefficients, numFunction.power, numFunction.canvas);
+    public RationalFunction(Function numFunction, Function denomFunction, SimpleCanvas canvas){
+        super(numFunction.coefficients, numFunction.power, canvas);
         this.numFunction = numFunction;
         this.denomFunction = denomFunction;
     }
 
-    public float evaluateFunction(float x){
-        float numerator = numFunction.evaluateFunction(x);
-        float denominator = denomFunction.evaluateFunction(x);
+    public double evaluateFunction(double x){
+        double numerator = numFunction.evaluateFunction(x);
+        double denominator = denomFunction.evaluateFunction(x);
         return numerator/denominator;
     }
 
@@ -20,7 +20,7 @@ public class RationalFunction extends Function{
         super.plotFunction(numPoints);
     }
 
-    public void setWindow(float xMin, float xMax, float yMin, float yMax){
+    public void setWindow(double xMin, double xMax, double yMin, double yMax){
         super.setWindow(xMin, xMax, yMin, yMax);
     }
 

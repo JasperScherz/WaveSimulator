@@ -1,41 +1,45 @@
 public class TrigFunction extends Function{
 
+    private double counter;
+
+    public TrigFunction(NPTS functionName, int numOfCoefficients, SimpleCanvas canvas){
+        super(functionName.getCoefficients(numOfCoefficients), 0, canvas);
+    }
+
+    public double evaluateFunction(double x){
+        double convertedX = (x - 3.1415) % 6.28;
+        
+        
+        if(convertedX < 355/113){
+            convertedX += 6.28;
+        }
+
+        if(convertedX > 355/113){
+            convertedX -= 6.28;
+        }
+        double value = super.evaluateFunction(convertedX);
+       /* if(convertedX2 > 3.14 && convertedX2 < 6.28){
+            value *= -1;
+        } 
+        if(convertedX2 > 3.14 && convertedX < 0){
+            value *= -1;
+        }
+        */
+        return value;
+    }
+
+/* 
+    public void plotFunction(int numPoints){
+
+        for (int i = 0; i < (xMax - xMin); i++) {
+            if(i != -xMin) {
+                canvas.drawLine(xConversion * i, (int)(yConversion*-yMin) - 10, xConversion * i, (int)(yConversion*-yMin) + 10);
+            } else{
+                canvas.drawLine(xConversion * i, 0, xConversion * i, height);
+            }
+        }
+
+    }
+    */
     
-
-    public TrigFunction(MathFunction functionName, int numOfCoefficients, SimpleCanvas canvas){
-        super(coefficients, 1, canvas);
-        switch (MathFunction.size){
-            case 1: functionName = MathFunction.SIN;
-                float[] coefficients = new float[numOfCoefficients];
-                int index = 1;
-                float sign = 1F;
-                for (float coefficient : coefficients) {
-                    coefficient = sign / factorial(index);
-                    sign *= -1;
-                    index += 2;
-                }
-                
-
-        }
-    }
-
-    public float[] getCoefficients(int numOfCoefficients){
-        float[] coefficients = new float[numOfCoefficients];
-        int index = 1;
-        float sign = 1F;
-        for (float coefficient : coefficients) {
-            coefficient = sign / factorial(index);
-            sign *= -1;
-            index += 2;
-        }
-        return coefficients;
-    }
-
-    private static int factorial(int x){
-        if(x == 1 || x == 0){
-            return 1;
-        } else{
-            return x * factorial(x - 1);
-        }
-    }
 }
