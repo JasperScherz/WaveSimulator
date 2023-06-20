@@ -1,12 +1,12 @@
 public class RationalFunction extends Function{
 
-    private float[] denomCoefs;
+    private float[] denomCoefficients;
 
     private int denomPower;
 
-    public RationalFunction(float[] numCoefs, float[] denomCoefs, int numStartingPower, int denomStartingPower, SimpleCanvas canvas){
+    public RationalFunction(float[] numCoefs, float[] denomCoefficients, int numStartingPower, int denomStartingPower, SimpleCanvas canvas){
         super(numCoefs, numStartingPower, canvas);
-        this.denomCoefs = denomCoefs;
+        this.denomCoefficients = denomCoefficients;
         this.denomPower = denomStartingPower;
     }
 
@@ -14,7 +14,7 @@ public class RationalFunction extends Function{
         float numerator = super.evaluateFunction(x);
         int denomPower1 = denomPower;
         float denominator = 0;
-        for(float coef:denomCoefs){
+        for(float coefficient:denomCoefficients){
             float value = x;
 
             if(denomPower1 > 0) {
@@ -29,7 +29,7 @@ public class RationalFunction extends Function{
                 value = 1;
             }
             denomPower1++;
-            denominator += coef * value;
+            denominator += coefficient * value;
         }
         return numerator/denominator;
     }
@@ -43,6 +43,13 @@ public class RationalFunction extends Function{
     }
 
     public void printFunction(){
-
+        super.printFunction();
+        int denomPower1 = denomCoefficients.length - 1;
+        System.out.print("  /  ");
+        for(int i = denomCoefficients.length - 1; i > 0 ; i--){
+            System.out.print(denomCoefficients[i] + "x^" + denomPower1 + " + ");
+            denomPower1--;
+        }
+        System.out.print(denomCoefficients[0] + "x^" + denomPower1);
     }
 }

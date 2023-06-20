@@ -96,12 +96,12 @@ public class Function {
     }
 
     public void printFunction(){
-        int power1 = power;
+        int power1 = coefficients.length - 1;
         System.out.print("f(x) = ");
-        for (int i = 0; i < coefficients.length - 1; i++) {
+        for (int i = coefficients.length - 1; i > 0; i--) {
             System.out.print(coefficients[i] + "x^" + power1 + " + ");
-            power1++;
+            power1--;
         }
-        System.out.print(coefficients[coefficients.length - 1] + "x^" + power1 + "\n");
+        System.out.print(coefficients[0] + "x^" + power1);
     }
 }
