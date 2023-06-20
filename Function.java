@@ -8,7 +8,7 @@ public class Function {
 
     private static float xMin, xMax, yMin, yMax;
 
-    static int width, height, xConversion, yConversion;
+    private static int width, height, xConversion, yConversion;
 
     public Function(float[] coefficients, int startingPower, SimpleCanvas canvas){
         this.coefficients = coefficients;
