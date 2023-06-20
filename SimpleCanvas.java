@@ -24,7 +24,7 @@ public class SimpleCanvas {
 
     // for synchronization
     private static Object mouseLock = new Object();
-    private static Object keyLock = new Object();
+    //private static Object keyLock = new Object();
 
     public boolean isMousePressed() {
         synchronized (mouseLock) {
@@ -386,8 +386,8 @@ public class SimpleCanvas {
         // int hs = image.getHeight();
         int ws = image.getWidth(null);
         int hs = image.getHeight(null);
-        int xs = x * 2;
-        int ys = y * 2;
+        //int xs = x * 2;
+        //int ys = y * 2;
         if (ws < 0 || hs < 0) throw new IllegalArgumentException("image " + filename + " is corrupt");
 
         SwingUtilities.invokeLater(new Runnable() {
@@ -411,8 +411,8 @@ public class SimpleCanvas {
         // int hs = image.getHeight();
         int ws = image.getWidth(null);
         int hs = image.getHeight(null);
-        int xs = x * 2;
-        int ys = y * 2;
+        //int xs = x * 2;
+        //int ys = y * 2;
         if (ws < 0 || hs < 0) throw new IllegalArgumentException("image " + filename + " is corrupt");
 
         SwingUtilities.invokeLater(new Runnable() {
