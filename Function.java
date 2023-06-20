@@ -1,10 +1,10 @@
 public class Function {
 
-    private float[] coefficients;
+    protected float[] coefficients;
 
-    private SimpleCanvas canvas;
+    protected SimpleCanvas canvas;
 
-    private int power;
+    protected int power;
 
     private static float xMin, xMax, yMin, yMax;
 

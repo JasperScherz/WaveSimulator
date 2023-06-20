@@ -1,36 +1,18 @@
 public class RationalFunction extends Function{
 
-    private float[] denomCoefficients;
+    private Function numFunction;
 
-    private int denomPower;
+    private Function denomFunction;
 
-    public RationalFunction(float[] numCoefs, float[] denomCoefficients, int numStartingPower, int denomStartingPower, SimpleCanvas canvas){
-        super(numCoefs, numStartingPower, canvas);
-        this.denomCoefficients = denomCoefficients;
-        this.denomPower = denomStartingPower;
+    public RationalFunction(Function numFunction, Function denomFunction){
+        super(numFunction.coefficients, numFunction.power, numFunction.canvas);
+        this.numFunction = numFunction;
+        this.denomFunction = denomFunction;
     }
 
     public float evaluateFunction(float x){
-        float numerator = super.evaluateFunction(x);
-        int denomPower1 = denomPower;
-        float denominator = 0;
-        for(float coefficient:denomCoefficients){
-            float value = x;
-
-            if(denomPower1 > 0) {
-                for (int i = 1; i < denomPower1; i++) {
-                    value *= x;
-                }
-            }else if(denomPower1 < 0){
-                for (int i = 1; i > denomPower1; i--) {
-                    value /= x;
-                }
-            } else {
-                value = 1;
-            }
-            denomPower1++;
-            denominator += coefficient * value;
-        }
+        float numerator = numFunction.evaluateFunction(x);
+        float denominator = denomFunction.evaluateFunction(x);
         return numerator/denominator;
     }
 
@@ -43,13 +25,8 @@ public class RationalFunction extends Function{
     }
 
     public void printFunction(){
-        super.printFunction();
-        int denomPower1 = denomCoefficients.length - 1;
+        numFunction.printFunction();
         System.out.print("  /  ");
-        for(int i = denomCoefficients.length - 1; i > 0 ; i--){
-            System.out.print(denomCoefficients[i] + "x^" + denomPower1 + " + ");
-            denomPower1--;
-        }
-        System.out.print(denomCoefficients[0] + "x^" + denomPower1);
+        denomFunction.printFunction();
     }
 }
