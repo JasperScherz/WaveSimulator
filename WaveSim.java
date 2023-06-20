@@ -20,10 +20,10 @@ public class WaveSim {
         f3.plotFunction(200);
         f4.plotFunction(200);
 */
-        float[] numCoeff = {4, 0 , 1}; //x^2 + 4  at 3 = 9 + 4 = 13
+        float[] numCoeff = {4, 0 , 1}; //x^2 + 4  at 3 = 9 + 4 = 13 13/4 = 3.25
         float[] denomCoeff = {1, 1};   //x + 1    at 3 = 3 + 1 = 4
         RationalFunction f1RationalFunction = new RationalFunction(numCoeff, denomCoeff, 0, 0, canvas);
-        System.out.println("this is your rational function at 3: " + f1RationalFunction.evaluateFunction(3));
-        
+        f1RationalFunction.setWindow(-20, 20, -20, 20);
+        f1RationalFunction.plotFunction(200);
     }
 }
