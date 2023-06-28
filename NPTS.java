@@ -25,6 +25,18 @@ public enum NPTS{
             return coefficients;
         };
     },
+    ARCTAN{
+        public double[] getCoefficients(int numOfCoefficients){
+            double[] coefficients = new double[numOfCoefficients];
+
+            double sign = 1.0;
+            for(int i = 1; i < numOfCoefficients; i += 2){
+                coefficients[i] = sign / i;
+                sign *= -1;
+            }
+            return coefficients;
+        }
+    },
     LN{
         public double[] getCoefficients(int numOfCoefficients){
             double[] coefficients = new double[numOfCoefficients];

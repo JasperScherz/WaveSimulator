@@ -10,11 +10,12 @@ public class WaveSim {
 
     public static void testTrigFunction(SimpleCanvas canvas){
         NPTS sin = NPTS.SIN;
-        TrigFunction f1TrigFunction = new TrigFunction(sin, 9, canvas);
+        TrigFunction f1TrigFunction = new TrigFunction(sin, 15, canvas);
         f1TrigFunction.printFunction();
         f1TrigFunction.setWindow(-20.0, 20.0, -20.0, 20.0);
-        f1TrigFunction.plotFunction(100);
-        System.out.println("\n" + f1TrigFunction.evaluateFunction(6));
+        //f1TrigFunction.plotFunction(100);
+        f1TrigFunction.animateFunction(100, 100);
+        //System.out.println("\n" + f1TrigFunction.evaluateFunction(1.57));
     }
 
 
