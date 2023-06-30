@@ -6,9 +6,11 @@ public class Function {
 
     protected int power;
 
-    private static double xMin, xMax, yMin, yMax;
+    protected double PI;
 
-    private static int width, height, xConversion, yConversion;
+    protected static double xMin, xMax, yMin, yMax;
+
+    protected static int width, height, xConversion, yConversion;
 
     public Function(double[] coefficients, int startingPower, SimpleCanvas canvas){
         this.coefficients = coefficients;
@@ -20,6 +22,7 @@ public class Function {
 
         Function.xConversion = (int)(width/(xMax - xMin));
         Function.yConversion = (int)(height/(yMax - yMin));
+        PI = 3.141592653589793;
     }
 
     public double evaluateFunction(double x){
@@ -77,13 +80,13 @@ public class Function {
         canvas.show();
     }
 
-    private int xCoord(double x){
+    public int xCoord(double x){
        return (int)(xConversion * (x - xMin));
     }
 
-    private int yCoord(double x){
+    public int yCoord(double x){
         double yValue = evaluateFunction(x);
-        return (int)((yConversion*-yValue) + (yConversion*-yMin));
+        return (int)(yConversion * -(yValue + yMin));
     }
 
     public void setWindow(double xMin, double xMax, double yMin, double yMax){
@@ -99,7 +102,9 @@ public class Function {
         int power1 = coefficients.length - 1;
         System.out.print("f(x) = ");
         for (int i = coefficients.length - 1; i > 0; i--) {
-            System.out.print(coefficients[i] + "x^" + power1 + " + ");
+            if(coefficients[i] != 0){
+                System.out.print(coefficients[i] + "x^" + power1 + " + ");
+            }
             power1--;
         }
         System.out.print(coefficients[0] + "x^" + power1);
