@@ -3,7 +3,6 @@ public class WaveSim {
     public static void main(String[] args) {
 
         SimpleCanvas canvas = new SimpleCanvas(1920,1080);
-
         testTrigFunction(canvas);
 
     }
