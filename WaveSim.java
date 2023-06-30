@@ -14,7 +14,7 @@ public class WaveSim {
         f1TrigFunction.printFunction();
         f1TrigFunction.setWindow(-20.0, 20.0, -20.0, 20.0);
         //f1TrigFunction.plotFunction(100);
-        f1TrigFunction.animateFunction(100, 100);
+        f1TrigFunction.animateFunction(5, 100);
         //System.out.println("\n" + f1TrigFunction.evaluateFunction(1.57));
     }
 

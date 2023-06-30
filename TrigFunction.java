@@ -61,7 +61,7 @@ public class TrigFunction extends Function{
 
             counter += 0.1;
             try {
-                Thread.sleep(125);
+                Thread.sleep(500);
             } catch(InterruptedException e) {
                 System.out.println("got interrupted!");
             }
