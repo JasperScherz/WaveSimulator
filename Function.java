@@ -1,32 +1,32 @@
 public class Function {
 
-    private float[] coefficients;
+    protected double[] coefficients;
 
-    private SimpleCanvas canvas;
+    protected SimpleCanvas canvas;
 
-    private int power;
+    protected int power;
 
-    private static float xMin, xMax, yMin, yMax;
+    private static double xMin, xMax, yMin, yMax;
 
     private static int width, height, xConversion, yConversion;
 
-    public Function(float[] coefficients, int startingPower, SimpleCanvas canvas){
+    public Function(double[] coefficients, int startingPower, SimpleCanvas canvas){
         this.coefficients = coefficients;
         this.canvas = canvas;
         this.power = startingPower;
         Function.width = canvas.getWidth();
         Function.height = canvas.getHeight();
-        setWindow(-10, 10, -10, 10);
+        setWindow(-10.0, 10.0, -10.0, 10.0);
 
         Function.xConversion = (int)(width/(xMax - xMin));
         Function.yConversion = (int)(height/(yMax - yMin));
     }
 
-    public float evaluateFunction(float x){
+    public double evaluateFunction(double x){
         int power1 = power;
-        float total = 0;
-        for(float coef:coefficients){
-            float value = x;
+        double total = 0.0;
+        for(double coef:coefficients){
+            double value = x;
 
             if(power1 > 0) {
                 for (int i = 1; i < power1; i++) {
@@ -37,7 +37,7 @@ public class Function {
                     value /= x;
                 }
             } else {
-                value = 1;
+                value = 1.0;
             }
             power1++;
             total += coef * value;
@@ -57,7 +57,7 @@ public class Function {
         }
 
         //Draws yAxis
-        for (int i = 0; i < (yMax-yMin); i++) {
+        for (int i = 0; i < (yMax - yMin); i++) {
             if(i != -yMin) {
                 canvas.drawLine((int)(xConversion*-xMin) - 10, yConversion * i, (int)(xConversion*-xMin) + 10, yConversion * i);
             } else{
@@ -66,9 +66,9 @@ public class Function {
         }
 
         //Draws Function
-        for(float i = numPoints * xMin; i < numPoints*(xMax+1); i++){
-            float x = i/numPoints;
-            float x2 = (i+1)/numPoints;
+        for(double i = numPoints * xMin; i < numPoints*(xMax+1); i++){
+            double x = i/numPoints;
+            double x2 = (i+1)/numPoints;
 
             canvas.drawLine(xCoord(x),  yCoord(x), xCoord(x2), yCoord(x2));
             canvas.drawFilledCircle(xCoord(x), yCoord(x), 5);
@@ -77,16 +77,16 @@ public class Function {
         canvas.show();
     }
 
-    private int xCoord(float x){
+    private int xCoord(double x){
        return (int)(xConversion * (x - xMin));
     }
 
-    private int yCoord(float x){
-        float yValue = evaluateFunction(x);
+    private int yCoord(double x){
+        double yValue = evaluateFunction(x);
         return (int)((yConversion*-yValue) + (yConversion*-yMin));
     }
 
-    public void setWindow(float xMin, float xMax, float yMin, float yMax){
+    public void setWindow(double xMin, double xMax, double yMin, double yMax){
         Function.xMin = xMin;
         Function.xMax = xMax;
         Function.yMin = yMin;
